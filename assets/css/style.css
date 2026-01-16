@@ -18,7 +18,7 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow: hidden; /* スクロールさせない */
+    /*overflow: hidden; /* スクロールさせない */
 }
 
 h1, h2, .logo-text, .status-text {
@@ -326,7 +326,7 @@ main.page-container {
     flex-direction: column;
     justify-content: flex-start; /* 上詰め */
     align-items: center;         /* 横方向は中央 */
-    overflow-y: auto;            /* 縦スクロール有効 */
+    /*overflow-y: auto;            /* 縦スクロール有効 */
     padding-top: 120px;          /* ヘッダーとかぶらないように */
     padding-bottom: 50px;
 }
