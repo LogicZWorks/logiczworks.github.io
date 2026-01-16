@@ -4,7 +4,8 @@ LogicZ Works (ロジックジーワークス) の公式Webサイトのリポジ�
 ECU、CANデバイス、自動車用電子パーツの開発・販売情報を掲載しています。
 
 ## 🚀 Access
-Official Site: [https://logiczworks.github.io/](https://logiczworks.github.io/)
+Official Site: [https://logiczworks.github.io/]
+(https://logiczworks.github.io/)
 
 ## 🛠 Project Structure
 このサイトは静的HTML/CSS/JSで構成され、GitHub Pages (.nojekyll) でホスティングされています。

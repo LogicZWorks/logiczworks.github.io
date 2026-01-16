@@ -35,7 +35,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 100;
+    z-index: 1000;
 }
 
 /* ロゴ設定 */
@@ -46,7 +46,7 @@ h1.logo {
 }
 h1.logo span { color: var(--brand-orange); }
 
-/* --- メインコンテンツ --- */
+/* --- メインコンテンツ (トップページ用) --- */
 main {
     flex: 1;
     display: flex;
@@ -157,4 +157,261 @@ footer {
 @media (max-width: 768px) {
     .visual-title { font-size: 2rem; }
     .loading-container { width: 80%; }
+}
+
+/* =========================================
+   メニューボタンとオーバーレイのデザイン
+   ========================================= */
+
+/* --- ボタン全体の配置 --- */
+.menu-btn {
+    cursor: pointer;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* --- 文字部分 (SYS.MENU) --- */
+.menu-text {
+    font-family: 'Orbitron', sans-serif; 
+    font-size: 1.5rem;                   
+    font-weight: 900;                    
+    color: var(--text-white);
+    letter-spacing: 0.1em;
+    line-height: 1;
+    transition: 0.3s;
+}
+
+.menu-btn:hover .menu-text {
+    color: var(--brand-orange);
+    text-shadow: 0 0 10px rgba(255, 102, 0, 0.5);
+}
+
+/* --- 3本線アイコン (ハンバーガー) --- */
+.hamburger {
+    width: 30px;
+    height: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-white);
+    transition: 0.4s;
+    border-radius: 2px;
+}
+
+.menu-btn:hover .hamburger span {
+    background-color: var(--brand-orange);
+    box-shadow: 0 0 5px rgba(255, 102, 0, 0.5);
+}
+
+/* --- メニューオープン時の変形 --- */
+body.menu-open .hamburger span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+    background-color: var(--brand-orange);
+}
+body.menu-open .hamburger span:nth-child(2) {
+    opacity: 0;
+}
+body.menu-open .hamburger span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+    background-color: var(--brand-orange);
+}
+
+/* --- メニューオーバーレイ --- */
+.menu-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100vh;
+    background: rgba(0, 0, 0, 0.7); /* すりガラス風のため少し透過 */
+    backdrop-filter: blur(10px);    /* ぼかし */
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+body.menu-open .menu-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* --- メニューリスト (HUDスタイル) --- */
+.menu-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.menu-item a {
+    display: block;
+    text-decoration: none;
+    padding-left: 15px;
+    border-left: 4px solid transparent;
+    transition: all 0.2s ease-out;
+}
+
+.menu-en {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-white);
+    line-height: 1.1;
+    letter-spacing: 0.05em;
+    transition: 0.3s;
+}
+
+.menu-ja {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #666;
+    margin-top: 5px;
+    padding-left: 2px;
+    letter-spacing: 0.05em;
+    transition: 0.3s;
+}
+
+/* ホバー時の動き */
+.menu-item a:hover {
+    border-left-color: var(--brand-orange);
+    padding-left: 25px;
+    background: linear-gradient(90deg, rgba(255, 102, 0, 0.1), transparent);
+}
+
+.menu-item a:hover .menu-en {
+    color: var(--brand-orange);
+    text-shadow: 0 0 15px rgba(255, 102, 0, 0.6);
+}
+
+.menu-item a:hover .menu-ja {
+    color: var(--text-dim);
+}
+
+/* 外部リンク矢印 */
+.external-icon {
+    font-size: 1rem;
+    color: var(--brand-orange);
+    vertical-align: top;
+    margin-left: 5px;
+}
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+    .menu-en { font-size: 1.8rem; }
+    .menu-ja { font-size: 0.75rem; }
+}
+
+/* =========================================
+   下層ページ (ABOUTなど) 共通レイアウト
+   ========================================= */
+
+/* メインコンテナ: トップページと違い、スクロール可能にする */
+main.page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* 上詰め */
+    align-items: center;         /* 横方向は中央 */
+    overflow-y: auto;            /* 縦スクロール有効 */
+    padding-top: 120px;          /* ヘッダーとかぶらないように */
+    padding-bottom: 50px;
+}
+
+/* =========================================
+   ABOUTページ用: ガラスパネルデザイン
+   ========================================= */
+
+/* ガラスパネル (SFチックな枠) */
+.glass-panel {
+    background: rgba(20, 20, 20, 0.8); /* 半透明の黒 */
+    border: 1px solid #333;
+    border-left: 4px solid var(--brand-orange); /* 左にアクセントライン */
+    padding: 40px;
+    width: 90%;          /* スマホでもはみ出さないように */
+    max-width: 700px;
+    backdrop-filter: blur(10px); /* 背景をぼかす */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    
+    /* ★左寄せを追加 (プロっぽく見せるため) */
+    text-align: left; 
+}
+
+/* パネル内のタイトル */
+.panel-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    border-bottom: 1px solid #444;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    color: var(--text-white);
+}
+.panel-title .mark { color: var(--brand-orange); margin-right: 10px; }
+
+/* 見出しのデザイン */
+.about-section h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--brand-orange);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+/* 強調文字 */
+.highlight {
+    color: var(--text-white);
+    background: linear-gradient(transparent 60%, rgba(255, 102, 0, 0.4) 60%);
+    font-weight: 700;
+}
+
+/* 文章 */
+.about-section p {
+    color: #ccc;
+    line-height: 1.8;
+    font-size: 0.95rem;
+}
+
+/* 仕切り線 */
+.divider { border: 0; border-top: 1px dashed #444; margin: 30px 0; }
+
+/* スペック表のグリッド表示 */
+.spec-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2列表示 */
+    gap: 15px;
+}
+.spec-item {
+    background: rgba(255,255,255,0.05);
+    padding: 10px 15px;
+    border-radius: 4px;
+}
+.spec-item .label {
+    display: block;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    color: var(--brand-orange);
+}
+.spec-item .value {
+    display: block;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text-white);
+}
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+    .glass-panel { padding: 20px; border-left-width: 2px; }
+    .spec-grid { grid-template-columns: 1fr; } /* スマホなら1列 */
 }
