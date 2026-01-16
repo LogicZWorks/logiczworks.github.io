@@ -3,8 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LogicZ Works | System Booting...</title>
+    
+    <title>LogicZ Works | ECU・CANデバイス開発 / Link G4X対応機器</title>
+    
+    <meta name="description" content="LogicZ Works (ロジックジーワークス) | 現役自動車開発エンジニアによるECU/CAN関連デバイス開発・販売。Link G4X対応メーター、車速パルス変換器、各種電子パーツの設計・製作。Engineering for The Edge.">
+    <meta name="keywords" content="LogicZ Works,ロジックジーワークス,ECU,Link G4X,CAN通信,自動車パーツ,電子工作,Arduino,ESP32,Defi,ワンオフパーツ">
+    
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="{ShopURL}">
+
+    <meta property="og:title" content="LogicZ Works - Engineering for The Edge">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="自動車制御開発エンジニアが手がける、ECU/CANデバイス専門ガレージブランド。Link G4X対応機器やカスタム電子パーツを展開中。">
+    <meta property="og:url" content="{ShopURL}">
+    <meta property="og:image" content="{LogoImageURL}">
+    <meta property="og:site_name" content="LogicZ Works">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@LogicZ_works">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoPartsStore",
+      "name": "LogicZ Works",
+      "alternateName": "ロジックジーワークス",
+      "url": "{ShopURL}",
+      "description": "ECU tuning parts, CAN-BUS devices, and custom automotive electronics development.",
+      "founder": {
+        "@type": "Person",
+        "name": "LogicZ Works Dev"
+      },
+      "brand": {
+        "@type": "Brand",
+        "name": "LogicZ Works",
+        "slogan": "Engineering for The Edge"
+      },
+      "sameAs": [
+        "https://github.com/LogicZWorks",
+        "https://x.com/LogicZ_works" 
+      ]
+    }
+    </script>
+
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    
     <style>
         /* --- 変数定義 --- */
         :root {
@@ -43,11 +86,14 @@
             align-items: center;
             z-index: 100;
         }
-        .logo {
+        
+        /* 【SEO修正】ロゴをH1扱いに変更（見た目は維持） */
+        h1.logo {
             font-size: 1.5rem;
             font-weight: 900;
+            margin: 0; /* 追加: 余計な余白を消す */
         }
-        .logo span { color: var(--brand-orange); }
+        h1.logo span { color: var(--brand-orange); }
 
         /* --- メインコンテンツ --- */
         main {
@@ -78,11 +124,13 @@
             padding: 0 20px;
         }
 
-        h1 {
+        /* 【SEO修正】SYSTEM BOOTING...の見た目を維持するためのクラス */
+        .visual-title {
             font-size: 3rem;
             margin: 0 0 20px 0;
             text-shadow: 0 0 20px rgba(255, 102, 0, 0.3);
             line-height: 1.2;
+            font-weight: 700; /* h1のデフォルトを継承 */
         }
 
         p {
@@ -157,7 +205,7 @@
 
         /* スマホ対応 */
         @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
+            .visual-title { font-size: 2rem; }
             .loading-container { width: 80%; }
         }
     </style>
@@ -165,12 +213,12 @@
 <body>
 
     <header>
-        <div class="logo">Logic<span>Z</span> Works</div>
+        <h1 class="logo">Logic<span>Z</span> Works</h1>
     </header>
 
     <main>
         <div class="content-wrapper">
-            <h1>SYSTEM<br>BOOTING...</h1>
+            <h2 class="visual-title">SYSTEM<br>BOOTING...</h2>
             
             <div class="loading-container">
                 <div class="loading-bar"></div>
